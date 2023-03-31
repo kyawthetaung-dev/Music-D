@@ -45,7 +45,7 @@ init = () => {
         },
     ];
 
-    Ray.initDataTable('.tbl_music', true, columns, columnsDef);
+    Ray.initDataTable('#tbl_music', true, columns, columnsDef);
 }
 
 fetchData = () => {
@@ -58,7 +58,7 @@ fetchData = () => {
             });
         } else {
             if (results.data.length > 0) {
-                Ray.renderData('.tbl_music', results.data);
+                Ray.renderData('#tbl_music', results.data);
             }
         }
     });
