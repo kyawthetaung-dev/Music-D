@@ -1,0 +1,21 @@
+{
+  "name": "raytest",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.5",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "ejs": "~2.6.1",
+    "express": "~4.17.1",
+    "http-errors": "~1.7.2",
+    "md5": "^2.3.0",
+    "morgan": "~1.10.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "shortid": "^2.2.16"
+  }
+}
