@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     init();
     fetchData();
     fetchData();
@@ -9,14 +9,16 @@ init = () => {
     var columns = [
         { "data": "music_id" },
         { "data": "music_name" },
-        { "data": "released_at" },
+        { "data": "music_image" },
+        { "data": "artist_id" },
+        { "data": "album_id" },
+        { "data": "music_files" },
     ];
 
-    var columnsDef = [
-        {
-            "targets": 3,
+    var columnsDef = [{
+            "targets": 6,
             "data": "music_id",
-            "render": function (data, type, row, meta) {
+            "render": function(data, type, row, meta) {
                 var dom = ``;
                 dom = `
                 <div class="text-center">
@@ -30,7 +32,7 @@ init = () => {
         {
             "targets": 0,
             "data": "music_id",
-            "render": function (data, type, row, meta) {
+            "render": function(data, type, row, meta) {
                 var col = `
                 <ul class="nav flex-column">
                 <li class="nav-item">
@@ -48,14 +50,14 @@ init = () => {
 
 fetchData = () => {
     REST.get('/music/list', (err, results) => {
-        if(err){
+        if (err) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: err,
-              });
-        }else{
-            if(results.data.length > 0){
+            });
+        } else {
+            if (results.data.length > 0) {
                 Ray.renderData('.tbl_music', results.data);
             }
         }
@@ -63,20 +65,20 @@ fetchData = () => {
 }
 
 events = () => {
-    $('#frmMusicCreate').submit(function (e) { 
+    $('#frmMusicCreate').submit(function(e) {
         e.preventDefault();
         var data = $('#frmMusicCreate').serialize();
         REST.post('/music/create', data, (err, result) => {
-            if(err){
+            if (err) {
                 $.toast({
                     heading: 'Sorry!',
                     text: err,
                     icon: 'error',
                     position: 'bottom-right'
                 });
-            }else{
+            } else {
                 var code = result.code;
-                if(code == 200){
+                if (code == 200) {
                     $.toast({
                         heading: 'Success!',
                         text: 'A new music added!',
@@ -86,7 +88,7 @@ events = () => {
                     $('#musicModal').modal('toggle');
                     $('#frmMusicCreate').trigger('reset');
                     fetchData();
-                }else{
+                } else {
                     $.toast({
                         heading: 'Error!',
                         text: 'Fail!',
@@ -94,28 +96,28 @@ events = () => {
                         position: 'bottom-right'
                     });
                 }
-                
+
             }
         });
     });
 
-    $('.btn-dismiss').on('click', function () {
+    $('.btn-dismiss').on('click', function() {
         $('#frmMusicCreate').trigger('reset');
         $('#frmMusicEdit').trigger('reset');
     });
 
 
-    $(document).on('click', '.btnEdit', function(){
+    $(document).on('click', '.btnEdit', function() {
         var id = $(this).data('id');
-        REST.get('/music/edit/'+id, (err, result) => {
-            if(err){
+        REST.get('/music/edit/' + id, (err, result) => {
+            if (err) {
                 $.toast({
                     heading: 'Sorry!',
                     text: err,
                     icon: 'error',
                     position: 'bottom-right'
                 });
-            }else{
+            } else {
                 var data = result.data;
                 $('#edit_music_id').val(data.music_id);
                 $('#edit_music_name').val(data.music_name);
@@ -125,21 +127,21 @@ events = () => {
         });
     });
 
-    $('#frmMusicEdit').submit(function (e) { 
+    $('#frmMusicEdit').submit(function(e) {
         e.preventDefault();
         var id = $('#edit_music_id').val();
         var data = $('#frmMusicEdit').serialize();
-        REST.put('/music/edit/'+id, data, (err, result) => {
-            if(err){
+        REST.put('/music/edit/' + id, data, (err, result) => {
+            if (err) {
                 $.toast({
                     heading: 'Sorry!',
                     text: err,
                     icon: 'error',
                     position: 'bottom-right'
                 });
-            }else{
+            } else {
                 var code = result.code;
-                if(code == 200){
+                if (code == 200) {
                     $.toast({
                         heading: 'Success!',
                         text: 'Updated user!',
@@ -155,18 +157,18 @@ events = () => {
     });
 }
 
-$(document).on('click', '.btnDelete', function () {
+$(document).on('click', '.btnDelete', function() {
     var id = $(this).data('id');
     var value = $(this).data('value');
     REST.delete('/music/delete/', id, value, (err, result) => {
-        if(err){
+        if (err) {
             $.toast({
                 heading: 'Sorry!',
                 text: err,
                 icon: 'error',
                 position: 'bottom-right'
             });
-        }else{
+        } else {
             fetchData();
         }
     });

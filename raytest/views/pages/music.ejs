@@ -2,142 +2,145 @@
 <html lang="en">
 
 <head>
-  <%- include('../common/links.ejs') %>
+    <%- include('../common/links.ejs') %>
 </head>
 
 <body>
-  <!-- ======= Header ======= -->
-  <%- include('../components/header.ejs') -%>
+    <!-- ======= Header ======= -->
+    <%- include('../components/header.ejs') -%>
 
-    <%- include('../components/sidebar.ejs') -%>
-      <main id="main" class="main">
+        <%- include('../components/sidebar.ejs') -%>
+            <main id="main" class="main">
 
-        <div class="pagetitle">
-          <nav>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item">Music List</li>
-            </ol>
-          </nav>
-        </div><!-- End Page Title -->
+                <div class="pagetitle">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item">Music List</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!-- End Page Title -->
 
-        <section class="section">
-          <div class="row">
-            <div class="col-lg-12">
+                <section class="section">
+                    <div class="row">
+                        <div class="col-lg-12">
 
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <h5 class="card-title">Music List</h5>
-                    </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-2">
-                      <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal"
-                        data-bs-target="#musicModal">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5 class="card-title">Music List</h5>
+                                        </div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#musicModal">
                         <i class="bi bi-music-note-beamed"></i>
                         Add Music
                       </button>
+                                        </div>
+                                    </div>
+
+                                    <table class="table datatable tbl_music">
+                                        <thead>
+                                            <tr>
+                                                <th>Music ID</th>
+                                                <th>Music Name</th>
+                                                <th>Music Image</th>
+                                                <th>Artist Name</th>
+                                                <th>Album Name</th>
+                                                <th>Songs</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+
+                                    <div class="modal fade" id="musicModal" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Create Music</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="frmMusicCreate">
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Music Name</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" id="music_name" name="music_name" placeholder="Enter Music Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputDate" class="col-sm-4 col-form-label">Released Date</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="date" class="form-control" id="released_at" name="released_at">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer justify-content-center">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Create</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade" id="musicEditModal" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Edit Music</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="frmMusicEdit">
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Music ID</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="edit_music_id" id="edit_music_id" class="form-control" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Music Name</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="edit_musi_name" id="edit_music_name" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputDate" class="col-sm-4 col-form-label">Released Date</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="date" name="edit_released_date" id="edit_released_date" class="form-control" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer justify-content-center">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                  </div>
+                </section>
 
-                  <table class="table datatable tbl_music">
-                    <thead>
-                      <tr>
-                        <th>Music ID</th>
-                        <th>Music Name</th>
-                        <th>Released Date</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                  </table>
-
-                  <div class="modal fade" id="musicModal" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Create Music</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <form id="frmMusicCreate">
-                            <div class="row mb-3">
-                              <label for="inputText" class="col-sm-4 col-form-label">Music Name</label>
-                              <div class="col-sm-8">
-                                <input type="text" class="form-control" id="music_name" name="music_name"
-                                  placeholder="Enter Music Name">
-                              </div>
-                            </div>
-                            <div class="row mb-3">
-                              <label for="inputDate" class="col-sm-4 col-form-label">Released Date</label>
-                              <div class="col-sm-8">
-                                <input type="date" class="form-control" id="released_at" name="released_at">
-                              </div>
-                            </div>
-                            <div class="modal-footer justify-content-center">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submit" class="btn btn-primary">Create</button>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal fade" id="musicEditModal" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Edit Music</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <form id="frmMusicEdit">
-                            <div class="row mb-3">
-                              <label for="inputText" class="col-sm-4 col-form-label">Music ID</label>
-                              <div class="col-sm-8">
-                                <input type="text" name="edit_music_id" id="edit_music_id" class="form-control" readonly>
-                              </div>
-                            </div>
-                            <div class="row mb-3">
-                              <label for="inputText" class="col-sm-4 col-form-label">Music Name</label>
-                              <div class="col-sm-8">
-                                <input type="text" name="edit_musi_name" id="edit_music_name" class="form-control">
-                              </div>
-                            </div>
-                            <div class="row mb-3">
-                              <label for="inputDate" class="col-sm-4 col-form-label">Released Date</label>
-                              <div class="col-sm-8">
-                                <input type="date" name="edit_released_date" id="edit_released_date" class="form-control" required>
-                              </div>
-                            </div>
-                            <div class="modal-footer justify-content-center">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submit" class="btn btn-primary">Update</button>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-      </main><!-- End #main -->
+            </main>
+            <!-- End #main -->
 
 
-      <!-- ======= Footer ======= -->
-      <%- include('../components/footer.ejs') -%>
+            <!-- ======= Footer ======= -->
+            <%- include('../components/footer.ejs') -%>
 
-        <%- include('../common/scripts.ejs') %>
-          <script src="/javascripts/music.js"></script>
+                <%- include('../common/scripts.ejs') %>
+                    <script src="/javascripts/music.js"></script>
 </body>
 
 </html>
