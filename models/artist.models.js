@@ -1,8 +1,8 @@
 const mysql = require('../helpers/database');
 
 //music list
-exports.musicList = (cb) => {
-    var str = ` SELECT music_id,music_name,DATE_FORMAT(released_at, '%d %M %Y') as released_at FROM tbl_music;`;
+exports.artistList = (cb) => {
+    var str = ` SELECT * FROM tbl_artist;`;
     mysql.query(str, function (err, row) {
         if (err) {
             cb(err, null);
@@ -16,8 +16,8 @@ exports.musicList = (cb) => {
     })
 }
 
-exports.musicCreate = (data, cb) => {
-    var str = `INSERT INTO tbl_music SET ?;`;
+exports.artistCreate = (data, cb) => {
+    var str = `INSERT INTO tbl_artist SET ?;`;
     mysql.query_filter(str,data, function (err, row) {
         if (err) {
             cb(err, null);
@@ -32,8 +32,8 @@ exports.musicCreate = (data, cb) => {
 }
 
 
-exports.getEditMusic = (id, cb) => {
-    var str = ` SELECT * FROM tbl_music WHERE music_id = ? ;`;
+exports.getEditArtist = (id, cb) => {
+    var str = ` SELECT * FROM tbl_artist WHERE artist_id = ? ;`;
     mysql.query_filter(str,[id], function (err, row) {
         if (err) {
             cb(err, null);
@@ -44,8 +44,8 @@ exports.getEditMusic = (id, cb) => {
 }
 
 
-exports.putEditMusic = (id, data, cb) => {
-    var str = `UPDATE tbl_music SET ? WHERE music_id = ? ;`;
+exports.putEditArtist = (id, data, cb) => {
+    var str = `UPDATE tbl_artist SET ? WHERE artist_id = ? ;`;
     mysql.query_filter(str,[data, id], function (err, row) {
         if (err) {
             cb(err, null);
@@ -56,8 +56,8 @@ exports.putEditMusic = (id, data, cb) => {
 }
 
 
-exports.deleteMusic = (id, cb) => {
-    var str = ` DELETE FROM tbl_music WHERE music_id = ? ;`;
+exports.deleteArtist = (id, cb) => {
+    var str = ` DELETE FROM tbl_artist WHERE artist_id = ? ;`;
     mysql.query_filter(str,[id], function (err, row) {
         if (err) {
             cb(err, null);

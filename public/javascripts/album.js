@@ -7,21 +7,21 @@ $(function () {
 
 init = () => {
     var columns = [
-        { "data": "music_id" },
-        { "data": "music_name" },
-        { "data": "released_at" },
+        { "data": "alb_id" },
+        { "data": "alb_name" },
+        { "data": "alb_image" },
     ];
 
     var columnsDef = [
         {
             "targets": 3,
-            "data": "music_id",
+            "data": "alb_id",
             "render": function (data, type, row, meta) {
                 var dom = ``;
                 dom = `
                 <div class="text-center">
                     <button type="button" class="btn btn-info btn-icon btn-sm btnEdit" style="width : 45%" data-id="${data}"><i class="fas fa-user-edit"></i> Edit</button>
-                    <button type="button" class="btn btn-danger btn-icon btn-sm btnDelete" style="width : 45%" data-id="${data}" data-value="${row.music_id}"><i class="fas fa-trash"></i> Delete</button>
+                    <button type="button" class="btn btn-danger btn-icon btn-sm btnDelete" style="width : 45%" data-id="${data}" data-value="${row.album_id}"><i class="fas fa-trash"></i> Delete</button>
                 </div>
                 `;
                 return dom;
@@ -29,7 +29,7 @@ init = () => {
         },
         {
             "targets": 0,
-            "data": "music_id",
+            "data": "alb_id",
             "render": function (data, type, row, meta) {
                 var col = `
                 <ul class="nav flex-column">
@@ -43,11 +43,11 @@ init = () => {
         },
     ];
 
-    Ray.initDataTable('.tbl_music', true, columns, columnsDef);
+    Ray.initDataTable('.tbl_album', true, columns, columnsDef);
 }
 
 fetchData = () => {
-    REST.get('/music/list', (err, results) => {
+    REST.get('/album/list', (err, results) => {
         if(err){
             Swal.fire({
                 icon: 'error',
@@ -56,17 +56,17 @@ fetchData = () => {
               });
         }else{
             if(results.data.length > 0){
-                Ray.renderData('.tbl_music', results.data);
+                Ray.renderData('.tbl_album', results.data);
             }
         }
     });
 }
 
 events = () => {
-    $('#frmMusicCreate').submit(function (e) { 
+    $('#frmAlbumCreate').submit(function (e) { 
         e.preventDefault();
-        var data = $('#frmMusicCreate').serialize();
-        REST.post('/music/create', data, (err, result) => {
+        var data = $('#frmAlbumCreate').serialize();
+        REST.post('/album/create', data, (err, result) => {
             if(err){
                 $.toast({
                     heading: 'Sorry!',
@@ -79,12 +79,12 @@ events = () => {
                 if(code == 200){
                     $.toast({
                         heading: 'Success!',
-                        text: 'A new music added!',
+                        text: 'A new album added!',
                         icon: 'success',
                         position: 'bottom-right'
                     });
-                    $('#musicModal').modal('toggle');
-                    $('#frmMusicCreate').trigger('reset');
+                    $('#albumModal').modal('toggle');
+                    $('#frmAlbumCreate').trigger('reset');
                     fetchData();
                 }else{
                     $.toast({
@@ -100,14 +100,14 @@ events = () => {
     });
 
     $('.btn-dismiss').on('click', function () {
-        $('#frmMusicCreate').trigger('reset');
-        $('#frmMusicEdit').trigger('reset');
+        $('#frmAlbumCreate').trigger('reset');
+        $('#frmAlbumEdit').trigger('reset');
     });
 
 
     $(document).on('click', '.btnEdit', function(){
         var id = $(this).data('id');
-        REST.get('/music/edit/'+id, (err, result) => {
+        REST.get('/album/edit/'+id, (err, result) => {
             if(err){
                 $.toast({
                     heading: 'Sorry!',
@@ -117,19 +117,19 @@ events = () => {
                 });
             }else{
                 var data = result.data;
-                $('#edit_music_id').val(data.music_id);
-                $('#edit_music_name').val(data.music_name);
-                $('#edit_released_date').val(data.released_at);
-                $('#musicEditModal').modal('show');
+                $('#edit_album_id').val(data.alb_id);
+                $('#edit_album_name').val(data.alb_name);
+                $('#edit_album_img').val(data.alb_image);
+                $('#albumEditModal').modal('show');
             }
         });
     });
 
-    $('#frmMusicEdit').submit(function (e) { 
+    $('#frmAlbumEdit').submit(function (e) { 
         e.preventDefault();
-        var id = $('#edit_music_id').val();
-        var data = $('#frmMusicEdit').serialize();
-        REST.put('/music/edit/'+id, data, (err, result) => {
+        var id = $('#edit_album_id').val();
+        var data = $('#frmAlbumEdit').serialize();
+        REST.put('/album/edit/'+id, data, (err, result) => {
             if(err){
                 $.toast({
                     heading: 'Sorry!',
@@ -146,8 +146,8 @@ events = () => {
                         icon: 'success',
                         position: 'bottom-right'
                     });
-                    $('#musicEditModal').modal('toggle');
-                    $('#frmMusicEdit').trigger('reset');
+                    $('#albumEditModal').modal('toggle');
+                    $('#frmAlbumEdit').trigger('reset');
                     fetchData();
                 }
             }
@@ -158,7 +158,7 @@ events = () => {
 $(document).on('click', '.btnDelete', function () {
     var id = $(this).data('id');
     var value = $(this).data('value');
-    REST.delete('/music/delete/', id, value, (err, result) => {
+    REST.delete('/album/delete/', id, value, (err, result) => {
         if(err){
             $.toast({
                 heading: 'Sorry!',

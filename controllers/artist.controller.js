@@ -1,7 +1,7 @@
-var musicModel = require('../models/music.models');
+var artistModel = require('../models/artist.models');
 
-exports.getMusicList = (req, res) => {
-    musicModel.musicList((err, result) => {
+exports.getArtistList = (req, res) => {
+    artistModel.artistList((err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,
@@ -16,13 +16,14 @@ exports.getMusicList = (req, res) => {
         }
     });
 }
-exports.musicCreate = (req, res) => {
+exports.artistCreate = (req, res) => {
     const data = {
-        music_name: req.body.music_name,
-        released_at : req.body.released_at,
+        artist_name: req.body.artist_name,
+        artist_image: req.body.artist_img,
+        artist_gender: req.body.artist_gender,
     }
     console.log(data);
-    musicModel.musicCreate(data,(err, result) => {
+    artistModel.artistCreate(data,(err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,
@@ -39,9 +40,9 @@ exports.musicCreate = (req, res) => {
 }
 
 
-exports.getEditMusic = (req, res) => {
+exports.getEditArtist = (req, res) => {
     var id = req.params.id;
-    musicModel.getEditMusic(id, (err, result) => {
+    artistModel.getEditArtist(id, (err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,
@@ -57,13 +58,14 @@ exports.getEditMusic = (req, res) => {
     });
 }
 
-exports.putEditMusic = (req, res) => {
+exports.putEditArtist = (req, res) => {
     var id = req.params.id;
     const data = {
-        music_name: req.body.edit_musi_name,
-        released_at : req.body.edit_released_date,
+        artist_name: req.body.edit_artist_name,
+        artist_image: req.body.edit_artist_img,
+        artist_gender: req.body.edit_artist_gender,
     }
-    musicModel.putEditMusic(id, data, (err, result) => {
+    artistModel.putEditArtist(id, data, (err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,
@@ -80,9 +82,9 @@ exports.putEditMusic = (req, res) => {
 }
 
 
-exports.deleteMusic = (req, res) => {
+exports.deleteArtist = (req, res) => {
     var id = req.params.id;
-    musicModel.deleteMusic(id, (err, result) => {
+    artistModel.deleteArtist(id, (err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,

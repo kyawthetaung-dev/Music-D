@@ -20,7 +20,10 @@ exports.getMusicList = (req, res) => {
 exports.musicCreate = (req, res) => {
     const data = {
         music_name: req.body.music_name,
-        released_at : req.body.released_at,
+        music_image: req.body.music_image,
+        artist_id: req.body.artist_id,
+        album_id: req.body.album_id,
+        music_files: req.body.music_files,
     }
     console.log(data);
     musicModel.musicCreate(data,(err, result) => {
@@ -61,8 +64,11 @@ exports.getEditMusic = (req, res) => {
 exports.putEditMusic = (req, res) => {
     var id = req.params.id;
     const data = {
-        music_name: req.body.edit_musi_name,
-        released_at : req.body.edit_released_date,
+        music_name: req.body.edit_music_name,
+        music_image: req.body.edit_music_image,
+        artist_id: req.body.edit_artist_id,
+        album_id: req.body.edit_album_id,
+        music_files: req.body.edit_music_files,
     }
     musicModel.putEditMusic(id, data, (err, result) => {
         if (err) {

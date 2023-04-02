@@ -16,7 +16,7 @@
           <nav>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item">Music List</li>
+              <li class="breadcrumb-item">User List</li>
             </ol>
           </nav>
         </div><!-- End Page Title -->
@@ -44,9 +44,12 @@
                   <table class="table datatable tbl_user">
                     <thead>
                       <tr>
-                        <th>ID</th>
-                        <th>Name</th>
+                        <th>User ID</th>
+                        <th>User Name</th>
                         <th>Phone</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Profile</th>
                         <th>Gender</th>
                         <th>Actions</th>
                       </tr>
@@ -73,13 +76,34 @@
                               </div>
                             </div>
                             <div class="row mb-3">
-                              <label for="inputText" class="col-sm-4 col-form-label">User Phone</label>
+                              <label for="inputText" class="col-sm-4 col-form-label">Phone</label>
                               <div class="col-sm-8">
                                 <input type="text" class="form-control" id="user_phone" name="user_phone"
                                   placeholder="Enter Phone">
                               </div>
                             </div>
-
+                            <div class="modal-body">
+                              <form id="frmUserCreate">
+                                <div class="row mb-3">
+                                  <label for="inputText" class="col-sm-4 col-form-label">Email</label>
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="user_email" name="user_email" placeholder="Enter user Name">
+                                  </div>
+                                </div>
+                                <div class="row mb-3">
+                                  <label for="inputText" class="col-sm-4 col-form-label">Password</label>
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="user_password" name="user_password"
+                                      placeholder="Enter Phone">
+                                  </div>
+                                </div>
+                                <div class="row mb-3">
+                                  <label for="inputText" class="col-sm-4 col-form-label">Profile</label>
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="user_profile" name="user_profile"
+                                      placeholder="Enter Phone">
+                                  </div>
+                                </div>
                             <div class="row mb-3">
                               <label for="inputDate" class="col-sm-4 col-form-label">Gender</label>
                               <div class="col-sm-8">
@@ -100,7 +124,7 @@
                     </div>
                   </div>
 
-                  <div class="modal fade" id="userEditMoadl" tabindex="-1">
+                  <div class="modal fade" id="userEditModal" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -112,19 +136,48 @@
                             <div class="row mb-3">
                               <label for="inputText" class="col-sm-4 col-form-label">User ID</label>
                               <div class="col-sm-8">
-                                <input type="text" name="edit_user_id" id="edit_user_id" class="form-control" readonly>
+                                <input type="text" class="form-control" id="edit_user_id" name="edit_user_id"
+                                  placeholder="Enter user Id">
                               </div>
-                            </div>
                             <div class="row mb-3">
                               <label for="inputText" class="col-sm-4 col-form-label">User Name</label>
                               <div class="col-sm-8">
-                                <input type="text" name="edit_user_name" id="edit_user_name" class="form-control">
+                                <input type="text" class="form-control" id="edit_user_name" name="edit_user_name"
+                                  placeholder="Enter user Name">
                               </div>
                             </div>
                             <div class="row mb-3">
-                              <label for="inputDate" class="col-sm-4 col-form-label">Released Date</label>
+                              <label for="inputText" class="col-sm-4 col-form-label">Phone</label>
                               <div class="col-sm-8">
-                                <select name="edit_gender" class="form-select" id="edit_gender">
+                                <input type="text" class="form-control" id="edit_user_phone" name="edit_user_phone"
+                                  placeholder="Enter Phone">
+                              </div>
+                            </div>
+                            <div class="modal-body">
+                              <form id="frmUserEdit">
+                                <div class="row mb-3">
+                                  <label for="inputText" class="col-sm-4 col-form-label">Email</label>
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="edit_user_email" name="edit_user_email" placeholder="Enter user Name">
+                                  </div>
+                                </div>
+                                <div class="row mb-3">
+                                  <label for="inputText" class="col-sm-4 col-form-label">Password</label>
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="edit_user_password" name="edit_user_password"
+                                      placeholder="Enter Password">
+                                  </div>
+                                </div>
+                                <div class="row mb-3">
+                                  <label for="inputText" class="col-sm-4 col-form-label">Profile</label>
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="edit_user_profile" name="edit_user_profile">
+                                  </div>
+                                </div>
+                            <div class="row mb-3">
+                              <label for="inputDate" class="col-sm-4 col-form-label">Gender</label>
+                              <div class="col-sm-8">
+                               <select name="gender" class="form-select" id="gender">
                                   <option value="" selected>Select Gender</option>
                                   <option value="Male">Male</option>
                                   <option value="Female">Female</option>
@@ -133,10 +186,11 @@
                             </div>
                             <div class="modal-footer justify-content-center">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submit" class="btn btn-primary">Update</button>
+                              <button type="submit" class="btn btn-primary">Create</button>
                             </div>
                           </form>
                         </div>
+                      </div>
                       </div>
                     </div>
                   </div>

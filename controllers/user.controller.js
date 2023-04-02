@@ -21,7 +21,10 @@ exports.userCreate = (req, res) => {
     const data = {
         user_name: req.body.user_name,
         user_phone : req.body.user_phone,
-        user_gender : req.body.gender,
+        email : req.body.user_email,
+        password: req.body.user_password,
+        user_profile : req.body.user_profile,
+        gender : req.body.gender,
     }
     console.log(`data`, data);
     userModel.userCreate(data,(err, result) => {
@@ -62,8 +65,11 @@ exports.putEditUser = (req, res) => {
     var id = req.params.id;
     const data = {
         user_name: req.body.edit_user_name,
-        user_phone: req.body.edit_user_phone,
-        user_gender : req.body.edit_user_gender,
+        user_phone : req.body.edit_user_phone,
+        email : req.body.edit_email,
+        password: req.body.edit_password,
+        user_profile : req.body.edit_user_profile,
+        gender : req.body.edit_gender,
     }
     userModel.putEditUser(id, data, (err, result) => {
         if (err) {

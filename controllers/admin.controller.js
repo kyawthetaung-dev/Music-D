@@ -1,7 +1,8 @@
-var musicModel = require('../models/music.models');
 
-exports.getMusicList = (req, res) => {
-    musicModel.musicList((err, result) => {
+var adminModel = require('../models/admin.models');
+
+exports.getAdminList = (req, res) => {
+    adminModel.adminList((err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,
@@ -16,13 +17,57 @@ exports.getMusicList = (req, res) => {
         }
     });
 }
-exports.musicCreate = (req, res) => {
+// exports.musicCreate = (req, res) => {
+//     const data = {
+//         music_name: req.body.music_name,
+//         released_at : req.body.released_at,
+//     }
+//     console.log(data);
+//     musicModel.musicCreate(data,(err, result) => {
+//         if (err) {
+//             res.status(200).json({
+//                 "code": 404,
+//                 "message": err
+//             })
+//         } else {
+//             res.status(200).json({
+//                 "code": 200,
+//                 "message": "Success",
+//                 data : result
+//             })
+//         }
+//     });
+// }
+
+
+exports.getEditAdmin = (req, res) => {
+    var id = req.params.id;
+    adminModel.getEditAdmin(id, (err, result) => {
+        if (err) {
+            res.status(200).json({
+                "code": 404,
+                "message": err
+            })
+        } else {
+            res.status(200).json({
+                "code": 200,
+                "message": "Success",
+                data : result
+            })
+        }
+    });
+}
+
+exports.putEditAdmin = (req, res) => {
+    var id = req.params.id;
     const data = {
-        music_name: req.body.music_name,
-        released_at : req.body.released_at,
+        admin_name: req.body.edit_admin_name,
+        gender: req.body.edit_gender,
+        admin_phone: req.body.edit_admin_ph,
+        admin_email: req.body.edit_admin_email,
+        password: req.body.edit_password,
     }
-    console.log(data);
-    musicModel.musicCreate(data,(err, result) => {
+    adminModel.putEditAdmin(id, data, (err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,
@@ -39,50 +84,9 @@ exports.musicCreate = (req, res) => {
 }
 
 
-exports.getEditMusic = (req, res) => {
+exports.deleteAdmin = (req, res) => {
     var id = req.params.id;
-    musicModel.getEditMusic(id, (err, result) => {
-        if (err) {
-            res.status(200).json({
-                "code": 404,
-                "message": err
-            })
-        } else {
-            res.status(200).json({
-                "code": 200,
-                "message": "Success",
-                data : result
-            })
-        }
-    });
-}
-
-exports.putEditMusic = (req, res) => {
-    var id = req.params.id;
-    const data = {
-        music_name: req.body.edit_musi_name,
-        released_at : req.body.edit_released_date,
-    }
-    musicModel.putEditMusic(id, data, (err, result) => {
-        if (err) {
-            res.status(200).json({
-                "code": 404,
-                "message": err
-            })
-        } else {
-            res.status(200).json({
-                "code": 200,
-                "message": "Success",
-                data : result
-            })
-        }
-    });
-}
-
-
-exports.deleteMusic = (req, res) => {
-    var id = req.params.id;
-    musicModel.deleteMusic(id, (err, result) => {
+    adminModel.deleteAdmin(id, (err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,

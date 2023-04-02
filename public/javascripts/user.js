@@ -10,12 +10,15 @@ init = () => {
         { "data": "user_id" },
         { "data": "user_name" },
         { "data": "user_phone" },
-        { "data": "user_gender" },
+        { "data": "email" },
+        { "data": "password" },
+        { "data": "user_profile" },
+        { "data": "gender" },
     ];
 
     var columnsDef = [
         {
-            "targets": 4,
+            "targets": 7,
             "data": "user_id",
             "render": function (data, type, row, meta) {
                 var dom = ``;
@@ -126,6 +129,10 @@ events = () => {
                 console.log(data);
                 $('#edit_user_id').val(data.user_id);
                 $('#edit_user_name').val(data.user_name);
+                $('#edit_user_phone').val(data.user_phone);
+                $('#edit_user_email').val(data.email);
+                $('#edit_user_password').val(data.password);
+                $('#edit_user_profile').val(data.user_profile);
                 $('select#edit_gender').val(data.gender);
                 $('#userEditMoadl').modal('show');
             }

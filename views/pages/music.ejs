@@ -35,9 +35,9 @@
                                         <div class="col-md-4"></div>
                                         <div class="col-md-2">
                                             <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#musicModal">
-                        <i class="bi bi-music-note-beamed"></i>
-                        Add Music
-                      </button>
+                                                <i class="bi bi-music-note-beamed"></i>
+                                                Add Music
+                                            </button>
                                         </div>
                                     </div>
 
@@ -74,11 +74,32 @@
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
-                                                            <label for="inputDate" class="col-sm-4 col-form-label">Released Date</label>
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Artist ID</label>
                                                             <div class="col-sm-8">
-                                                                <input type="date" class="form-control" id="released_at" name="released_at">
+                                                                <input type="text" class="form-control" id="artist_id" name="artist_id" placeholder="Enter Artist Id">
                                                             </div>
                                                         </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Album ID</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" id="album_id" name="album_id" placeholder="Enter Album ID">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="formFile" class="col-sm-4 col-form-label">Select Image</label>
+                                                            <div class="col-sm-8">
+                                                                <!-- <input class="form-control" type="file" id="formFile"> -->
+                                                                <input type="text" class="form-control" id="music_image" name="music_image" placeholder="Enter Album Name">
+                                                            </div>
+                                                          </div>
+                                                          <div class="row mb-3">
+                                                            <label for="formFileMultiple" class="col-sm-4 col-form-label">Select File</label>
+                                                            <div class="col-sm-8">
+                                                                <!-- <input class="form-control" type="file" id="formFileMultiple" multiple> -->
+                                                                <input type="text" class="form-control" id="music_files" name="music_files" placeholder="Enter Album Name">
+                                                            </div>
+                                                          </div>
+                                                        
                                                         <div class="modal-footer justify-content-center">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                             <button type="submit" class="btn btn-primary">Create</button>
@@ -107,15 +128,35 @@
                                                         <div class="row mb-3">
                                                             <label for="inputText" class="col-sm-4 col-form-label">Music Name</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" name="edit_musi_name" id="edit_music_name" class="form-control">
+                                                                <input type="text" name="edit_music_name"  id="edit_music_name" class="form-control" placeholder="Enter Music Name">
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
-                                                            <label for="inputDate" class="col-sm-4 col-form-label">Released Date</label>
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Artist ID</label>
                                                             <div class="col-sm-8">
-                                                                <input type="date" name="edit_released_date" id="edit_released_date" class="form-control" required>
+                                                                <input type="text" class="form-control" id="edit_artist_id" name="edit_artist_id" placeholder="Enter Artist Name">
                                                             </div>
                                                         </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Album ID</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" id="edit_album_id" name="edit_album_id" placeholder="Enter Album Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="formFile" class="col-sm-4 col-form-label">Select Image</label>
+                                                            <div class="col-sm-8">
+                                                                <!-- <input class="form-control" type="file" id="formFile"> -->
+                                                                <input type="text" class="form-control" id="edit_music_image" name="edit_music_image" placeholder="Enter Album Name">
+                                                            </div>
+                                                          </div>
+                                                          <div class="row mb-3">
+                                                            <label for="formFileMultiple" class="col-sm-4 col-form-label">Select File</label>
+                                                            <div class="col-sm-8">
+                                                                <!-- <input class="form-control" type="file" id="formFileMultiple" multiple> -->
+                                                                <input type="text" class="form-control" id="edit_music_files" name="edit_music_files" placeholder="Enter Album Name">
+                                                            </div>
+                                                          </div>
                                                         <div class="modal-footer justify-content-center">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                             <button type="submit" class="btn btn-primary">Update</button>
@@ -140,7 +181,7 @@
             <%- include('../components/footer.ejs') -%>
 
                 <%- include('../common/scripts.ejs') %>
-                <script src="/raytest/public/javascripts/music.js"></script>
+                <script src="/javascripts/music.js"></script>
 </body>
 
 </html>

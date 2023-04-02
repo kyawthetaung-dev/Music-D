@@ -32,20 +32,17 @@
                       <h5 class="card-title">Admin List</h5>
                     </div>
                     <div class="col-md-4"></div>
-                    <div class="col-md-2">
-                      <button type="button" class="btn btn-secondary p-2 m-2 " data-toggle="modal" data-target="#musicModal">
-                        <i class="bi bi-music-note-beamed"></i>
-                        Add Admin
-                      </button>
-                    </div>
-                  </div>
+                    
 
-                  <table class="table datatable tbl_music">
+                  <table class="table datatable tbl_admin">
                     <thead>
                       <tr>
                         <th>Admin ID</th>
                         <th>Admin Name</th>
-                        <th>Released Date</th>
+                        <th>Gender</th>
+                        <th>Admin Phone</th>
+                        <th>Admin Email</th>
+                        <th>Password</th>
                         <th>Actions</th>
                       </tr>
                     </thead>
@@ -53,7 +50,64 @@
 
                     </tbody>
                   </table>
+                  
 
+                <div class="modal fade" id="adminEditModal" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Edit Admin</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="frmAdminEdit">
+                                    <div class="row mb-3">
+                                        <label for="inputText" class="col-sm-4 col-form-label">Admin ID</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="edit_admin_id" id="edit_admin_id" class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="inputText" class="col-sm-4 col-form-label">Admin Name</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="edit_admin_name"  id="edit_admin_name" class="form-control" placeholder="Enter Admin Name">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="inputText" class="col-sm-4 col-form-label">Gender</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="edit_gender" name="edit_gender" placeholder="Enter Gender">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="inputText" class="col-sm-4 col-form-label">Album Phone</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="edit_admin_ph" name="edit_admin_ph" placeholder="Enter phone number">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="formFile" class="col-sm-4 col-form-label">Email</label>
+                                        <div class="col-sm-8">
+                                            <!-- <input class="form-control" type="file" id="formFile"> -->
+                                            <input type="text" class="form-control" id="edit_admin_email" name="edit_admin_email" placeholder="Enter email">
+                                        </div>
+                                      </div>
+                                      <div class="row mb-3">
+                                        <label for="formFileMultiple" class="col-sm-4 col-form-label">Password</label>
+                                        <div class="col-sm-8">
+                                            <!-- <input class="form-control" type="file" id="formFileMultiple" multiple> -->
+                                            <input type="text" class="form-control" id="edit_admin_pw" name="edit_admin_pw" placeholder="Enter password">
+                                        </div>
+                                      </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
               </div>
 

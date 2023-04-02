@@ -121,7 +121,10 @@ events = () => {
                 var data = result.data;
                 $('#edit_music_id').val(data.music_id);
                 $('#edit_music_name').val(data.music_name);
-                $('#edit_released_date').val(data.released_at);
+                $('#edit_music_image').val(data.music_image);
+                $('#edit_artist_id').val(data.artist_id);
+                $('#edit_album_id').val(data.album_id);
+                $('#edit_music_files').val(data.music_files);
                 $('#musicEditModal').modal('show');
             }
         });

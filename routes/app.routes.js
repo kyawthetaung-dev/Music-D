@@ -1,6 +1,9 @@
 var pagesController = require('../controllers/pages.controller');
 var userController = require('../controllers/user.controller');
 var musicController = require('../controllers/music.controller');
+var adminController = require('../controllers/admin.controller');
+var albumController = require('../controllers/album.controller');
+var artistController = require('../controllers/artist.controller');
 
 module.exports = (app) => {
     app.get('/', pagesController.getIndexPage);
@@ -20,10 +23,20 @@ module.exports = (app) => {
 
     //#region album
     app.get('/album', pagesController.getAlbumPage);
+    app.get('/album/list', albumController.getAlbumList);
+    app.post('/album/create', albumController.albumCreate);
+    app.get('/album/edit/:id', albumController.getEditAlbum);
+    app.put('/album/edit/:id', albumController.putEditAlbum);
+    app.delete('/album/delete/:id', albumController.deleteAlbum);
     // #endregion album
 
     //#region artist
     app.get('/artist', pagesController.getArtistPage);
+    app.get('/artist/list',artistController.getArtistList);
+    app.post('/artist/create',artistController.artistCreate);
+    app.get('/artist/edit/:id', artistController.getEditArtist);
+    app.put('/artist/edit/:id', artistController.putEditArtist);
+    app.delete('/artist/delete/:id',artistController.deleteArtist);
     // #endregion artist
 
     //#region genre
@@ -46,6 +59,10 @@ module.exports = (app) => {
 
     //#region admin
     app.get('/admin', pagesController.getAdminPage);
+    app.get('/admin/list', adminController.getAdminList);
+    app.get('/admin/edit/:id', adminController.getEditAdmin);
+    app.put('/admin/edit/:id', adminController.putEditAdmin);
+    app.delete('/admin/delete/:id', adminController.deleteAdmin);
     // #endregion admin
 
 };

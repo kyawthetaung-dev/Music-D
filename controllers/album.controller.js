@@ -1,7 +1,8 @@
-var musicModel = require('../models/music.models');
 
-exports.getMusicList = (req, res) => {
-    musicModel.musicList((err, result) => {
+var albumModel = require('../models/album.models');
+
+exports.getAlbumList = (req, res) => {
+    albumModel.albumList((err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,
@@ -16,13 +17,13 @@ exports.getMusicList = (req, res) => {
         }
     });
 }
-exports.musicCreate = (req, res) => {
+exports.albumCreate = (req, res) => {
     const data = {
-        music_name: req.body.music_name,
-        released_at : req.body.released_at,
+        alb_name: req.body.album_name,
+        alb_image: req.body.album_img,
     }
     console.log(data);
-    musicModel.musicCreate(data,(err, result) => {
+    albumModel.albumCreate(data,(err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,
@@ -39,9 +40,9 @@ exports.musicCreate = (req, res) => {
 }
 
 
-exports.getEditMusic = (req, res) => {
+exports.getEditAlbum = (req, res) => {
     var id = req.params.id;
-    musicModel.getEditMusic(id, (err, result) => {
+    albumModel.getEditAlbum(id, (err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,
@@ -57,13 +58,13 @@ exports.getEditMusic = (req, res) => {
     });
 }
 
-exports.putEditMusic = (req, res) => {
+exports.putEditAlbum = (req, res) => {
     var id = req.params.id;
     const data = {
-        music_name: req.body.edit_musi_name,
-        released_at : req.body.edit_released_date,
+        alb_name: req.body.edit_album_name,
+        alb_image: req.body.edit_album_img,
     }
-    musicModel.putEditMusic(id, data, (err, result) => {
+    albumModel.putEditAlbum(id, data, (err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,
@@ -80,9 +81,9 @@ exports.putEditMusic = (req, res) => {
 }
 
 
-exports.deleteMusic = (req, res) => {
+exports.deleteAlbum = (req, res) => {
     var id = req.params.id;
-    musicModel.deleteMusic(id, (err, result) => {
+    albumModel.deleteAlbum(id, (err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,

@@ -43,7 +43,7 @@ exports.getEditUser = (id, cb) => {
 }
 
 exports.putEditUser = (id, data, cb) => {
-    var str = `UPDATE tbl_music SET ? WHERE user_id = ? ;`;
+    var str = `UPDATE tbl_user SET ? WHERE user_id = ? ;`;
     mysql.query_filter(str,[data, id], function (err, row) {
         if (err) {
             cb(err, null);
