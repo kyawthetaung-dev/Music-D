@@ -30,6 +30,28 @@ init = () => {
             }
         },
         {
+            "targets": 2,
+            "data": "music_image",
+            "render": function(data, type, row, meta) {
+                var col = `
+                <img src="${row.music_image}" alt="images" width="30px">
+            `;
+                return col;
+            }
+        },
+        {
+            "targets": 5,
+            "data": "music_files",
+            "render": function(data, type, row, meta) {
+                var col = `
+                <audio controls>
+                <source src="${row.music_files}" type="audio/mpeg">
+                </audio>
+            `;
+                return col;
+            }
+        },
+        {
             "targets": 0,
             "data": "music_id",
             "render": function(data, type, row, meta) {

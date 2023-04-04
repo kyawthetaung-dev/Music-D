@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     init();
     fetchData();
     fetchData();
@@ -13,11 +13,10 @@ init = () => {
         { "data": "artist_gender" },
     ];
 
-    var columnsDef = [
-        {
+    var columnsDef = [{
             "targets": 4,
             "data": "artist_id",
-            "render": function (data, type, row, meta) {
+            "render": function(data, type, row, meta) {
                 var dom = ``;
                 dom = `
                 <div class="text-center">
@@ -28,10 +27,21 @@ init = () => {
                 return dom;
             }
         },
+
+        {
+            "targets": 2,
+            "data": "artist_image",
+            "render": function(data, type, row, meta) {
+                var col = `
+                <img src="${row.artist_image}" alt="images" width="30px">
+            `;
+                return col;
+            }
+        },
         {
             "targets": 0,
             "data": "artist_id",
-            "render": function (data, type, row, meta) {
+            "render": function(data, type, row, meta) {
                 var col = `
                 <ul class="nav flex-column">
                 <li class="nav-item">
@@ -49,14 +59,14 @@ init = () => {
 
 fetchData = () => {
     REST.get('/artist/list', (err, results) => {
-        if(err){
+        if (err) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: err,
-              });
-        }else{
-            if(results.data.length > 0){
+            });
+        } else {
+            if (results.data.length > 0) {
                 Ray.renderData('.tbl_artist', results.data);
             }
         }
@@ -64,20 +74,20 @@ fetchData = () => {
 }
 
 events = () => {
-    $('#frmArtistCreate').submit(function (e) { 
+    $('#frmArtistCreate').submit(function(e) {
         e.preventDefault();
         var data = $('#frmArtistCreate').serialize();
         REST.post('/artist/create', data, (err, result) => {
-            if(err){
+            if (err) {
                 $.toast({
                     heading: 'Sorry!',
                     text: err,
                     icon: 'error',
                     position: 'bottom-right'
                 });
-            }else{
+            } else {
                 var code = result.code;
-                if(code == 200){
+                if (code == 200) {
                     $.toast({
                         heading: 'Success!',
                         text: 'A new music added!',
@@ -87,7 +97,7 @@ events = () => {
                     $('#artistModal').modal('toggle');
                     $('#frmArtistCreate').trigger('reset');
                     fetchData();
-                }else{
+                } else {
                     $.toast({
                         heading: 'Error!',
                         text: 'Fail!',
@@ -95,28 +105,28 @@ events = () => {
                         position: 'bottom-right'
                     });
                 }
-                
+
             }
         });
     });
 
-    $('.btn-dismiss').on('click', function () {
+    $('.btn-dismiss').on('click', function() {
         $('#frmArtistCreate').trigger('reset');
         $('#frmArtistEdit').trigger('reset');
     });
 
 
-    $(document).on('click', '.btnEdit', function(){
+    $(document).on('click', '.btnEdit', function() {
         var id = $(this).data('id');
-        REST.get('/artist/edit/'+id, (err, result) => {
-            if(err){
+        REST.get('/artist/edit/' + id, (err, result) => {
+            if (err) {
                 $.toast({
                     heading: 'Sorry!',
                     text: err,
                     icon: 'error',
                     position: 'bottom-right'
                 });
-            }else{
+            } else {
                 var data = result.data;
                 $('#edit_artist_id').val(data.artist_id);
                 $('#edit_artist_name').val(data.artist_name);
@@ -127,21 +137,21 @@ events = () => {
         });
     });
 
-    $('#frmArtistEdit').submit(function (e) { 
+    $('#frmArtistEdit').submit(function(e) {
         e.preventDefault();
         var id = $('#edit_artist_id').val();
         var data = $('#frmArtistEdit').serialize();
-        REST.put('/artist/edit/'+id, data, (err, result) => {
-            if(err){
+        REST.put('/artist/edit/' + id, data, (err, result) => {
+            if (err) {
                 $.toast({
                     heading: 'Sorry!',
                     text: err,
                     icon: 'error',
                     position: 'bottom-right'
                 });
-            }else{
+            } else {
                 var code = result.code;
-                if(code == 200){
+                if (code == 200) {
                     $.toast({
                         heading: 'Success!',
                         text: 'Updated user!',
@@ -157,18 +167,18 @@ events = () => {
     });
 }
 
-$(document).on('click', '.btnDelete', function () {
+$(document).on('click', '.btnDelete', function() {
     var id = $(this).data('id');
     var value = $(this).data('value');
     REST.delete('/artist/delete/', id, value, (err, result) => {
-        if(err){
+        if (err) {
             $.toast({
                 heading: 'Sorry!',
                 text: err,
                 icon: 'error',
                 position: 'bottom-right'
             });
-        }else{
+        } else {
             fetchData();
         }
     });

@@ -32,7 +32,7 @@ exports.musicCreate = (req, res) => {
     console.log(data);
     musicModel.musicCreate(data, (err, result) => {
         if (err) {
-            res.status(200).json({
+            res.status(202).json({
                 "code": 404,
                 "message": err
             })

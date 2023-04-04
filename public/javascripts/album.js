@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     init();
     fetchData();
     fetchData();
@@ -12,11 +12,10 @@ init = () => {
         { "data": "alb_image" },
     ];
 
-    var columnsDef = [
-        {
+    var columnsDef = [{
             "targets": 3,
             "data": "alb_id",
-            "render": function (data, type, row, meta) {
+            "render": function(data, type, row, meta) {
                 var dom = ``;
                 dom = `
                 <div class="text-center">
@@ -27,10 +26,21 @@ init = () => {
                 return dom;
             }
         },
+
+        {
+            "targets": 2,
+            "data": "alb_image",
+            "render": function(data, type, row, meta) {
+                var col = `
+                <img src="${row.alb_image}" alt="images" width="30px">
+            `;
+                return col;
+            }
+        },
         {
             "targets": 0,
             "data": "alb_id",
-            "render": function (data, type, row, meta) {
+            "render": function(data, type, row, meta) {
                 var col = `
                 <ul class="nav flex-column">
                 <li class="nav-item">
@@ -48,14 +58,14 @@ init = () => {
 
 fetchData = () => {
     REST.get('/album/list', (err, results) => {
-        if(err){
+        if (err) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: err,
-              });
-        }else{
-            if(results.data.length > 0){
+            });
+        } else {
+            if (results.data.length > 0) {
                 Ray.renderData('.tbl_album', results.data);
             }
         }
@@ -63,20 +73,20 @@ fetchData = () => {
 }
 
 events = () => {
-    $('#frmAlbumCreate').submit(function (e) { 
+    $('#frmAlbumCreate').submit(function(e) {
         e.preventDefault();
         var data = $('#frmAlbumCreate').serialize();
         REST.post('/album/create', data, (err, result) => {
-            if(err){
+            if (err) {
                 $.toast({
                     heading: 'Sorry!',
                     text: err,
                     icon: 'error',
                     position: 'bottom-right'
                 });
-            }else{
+            } else {
                 var code = result.code;
-                if(code == 200){
+                if (code == 200) {
                     $.toast({
                         heading: 'Success!',
                         text: 'A new album added!',
@@ -86,7 +96,7 @@ events = () => {
                     $('#albumModal').modal('toggle');
                     $('#frmAlbumCreate').trigger('reset');
                     fetchData();
-                }else{
+                } else {
                     $.toast({
                         heading: 'Error!',
                         text: 'Fail!',
@@ -94,28 +104,28 @@ events = () => {
                         position: 'bottom-right'
                     });
                 }
-                
+
             }
         });
     });
 
-    $('.btn-dismiss').on('click', function () {
+    $('.btn-dismiss').on('click', function() {
         $('#frmAlbumCreate').trigger('reset');
         $('#frmAlbumEdit').trigger('reset');
     });
 
 
-    $(document).on('click', '.btnEdit', function(){
+    $(document).on('click', '.btnEdit', function() {
         var id = $(this).data('id');
-        REST.get('/album/edit/'+id, (err, result) => {
-            if(err){
+        REST.get('/album/edit/' + id, (err, result) => {
+            if (err) {
                 $.toast({
                     heading: 'Sorry!',
                     text: err,
                     icon: 'error',
                     position: 'bottom-right'
                 });
-            }else{
+            } else {
                 var data = result.data;
                 $('#edit_album_id').val(data.alb_id);
                 $('#edit_album_name').val(data.alb_name);
@@ -125,21 +135,21 @@ events = () => {
         });
     });
 
-    $('#frmAlbumEdit').submit(function (e) { 
+    $('#frmAlbumEdit').submit(function(e) {
         e.preventDefault();
         var id = $('#edit_album_id').val();
         var data = $('#frmAlbumEdit').serialize();
-        REST.put('/album/edit/'+id, data, (err, result) => {
-            if(err){
+        REST.put('/album/edit/' + id, data, (err, result) => {
+            if (err) {
                 $.toast({
                     heading: 'Sorry!',
                     text: err,
                     icon: 'error',
                     position: 'bottom-right'
                 });
-            }else{
+            } else {
                 var code = result.code;
-                if(code == 200){
+                if (code == 200) {
                     $.toast({
                         heading: 'Success!',
                         text: 'Updated user!',
@@ -155,18 +165,18 @@ events = () => {
     });
 }
 
-$(document).on('click', '.btnDelete', function () {
+$(document).on('click', '.btnDelete', function() {
     var id = $(this).data('id');
     var value = $(this).data('value');
     REST.delete('/album/delete/', id, value, (err, result) => {
-        if(err){
+        if (err) {
             $.toast({
                 heading: 'Sorry!',
                 text: err,
                 icon: 'error',
                 position: 'bottom-right'
             });
-        }else{
+        } else {
             fetchData();
         }
     });

@@ -1,4 +1,3 @@
-
 var albumModel = require('../models/album.models');
 
 exports.getAlbumList = (req, res) => {
@@ -12,7 +11,7 @@ exports.getAlbumList = (req, res) => {
             res.status(200).json({
                 "code": 200,
                 "message": "Success",
-                data : result
+                data: result
             })
         }
     });
@@ -23,7 +22,7 @@ exports.albumCreate = (req, res) => {
         alb_image: req.body.album_img,
     }
     console.log(data);
-    albumModel.albumCreate(data,(err, result) => {
+    albumModel.albumCreate(data, (err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,
@@ -33,7 +32,7 @@ exports.albumCreate = (req, res) => {
             res.status(200).json({
                 "code": 200,
                 "message": "Success",
-                data : result
+                data: result
             })
         }
     });
@@ -52,7 +51,7 @@ exports.getEditAlbum = (req, res) => {
             res.status(200).json({
                 "code": 200,
                 "message": "Success",
-                data : result
+                data: result
             })
         }
     });
@@ -74,7 +73,7 @@ exports.putEditAlbum = (req, res) => {
             res.status(200).json({
                 "code": 200,
                 "message": "Success",
-                data : result
+                data: result
             })
         }
     });
@@ -93,7 +92,7 @@ exports.deleteAlbum = (req, res) => {
             res.status(200).json({
                 "code": 200,
                 "message": "Success",
-                data : result
+                data: result
             })
         }
     });

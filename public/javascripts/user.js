@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     init();
     fetchData();
     fetchData();
@@ -16,11 +16,10 @@ init = () => {
         { "data": "gender" },
     ];
 
-    var columnsDef = [
-        {
+    var columnsDef = [{
             "targets": 7,
             "data": "user_id",
-            "render": function (data, type, row, meta) {
+            "render": function(data, type, row, meta) {
                 var dom = ``;
                 dom = `
                 <div class="text-center">
@@ -30,7 +29,18 @@ init = () => {
                 `;
                 return dom;
             }
-        }
+        },
+
+        {
+            "targets": 5,
+            "data": "user_profile",
+            "render": function(data, type, row, meta) {
+                var col = `
+                <img src="${row.user_profile}" alt="images" width="50px">
+            `;
+                return col;
+            }
+        },
     ];
 
     Ray.initDataTable('.tbl_user', true, columns, columnsDef);
@@ -38,14 +48,14 @@ init = () => {
 
 fetchData = () => {
     REST.get('/user/list', (err, results) => {
-        if(err){
+        if (err) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: err,
-              });
-        }else{
-            if(results.data.length > 0){
+            });
+        } else {
+            if (results.data.length > 0) {
                 Ray.renderData('.tbl_user', results.data);
             }
         }
@@ -53,21 +63,21 @@ fetchData = () => {
 }
 
 events = () => {
-    $('#frmUserCreate').submit(function (e) { 
+    $('#frmUserCreate').submit(function(e) {
         e.preventDefault();
         var data = $('#frmUserCreate').serialize();
         console.log(`data`, data);
         REST.post('/user/create', data, (err, result) => {
-            if(err){
+            if (err) {
                 $.toast({
                     heading: 'Sorry!',
                     text: err,
                     icon: 'error',
                     position: 'bottom-right'
                 });
-            }else{
+            } else {
                 var code = result.code;
-                if(code == 200){
+                if (code == 200) {
                     $.toast({
                         heading: 'Success!',
                         text: 'A new user added!',
@@ -77,7 +87,7 @@ events = () => {
                     $('#userModal').modal('toggle');
                     $('#frmUserCreate').trigger('reset');
                     fetchData();
-                }else{
+                } else {
                     $.toast({
                         heading: 'Sorry!',
                         text: err,
@@ -85,45 +95,45 @@ events = () => {
                         position: 'bottom-right'
                     });
                 }
-                
+
             }
         });
     });
 
-    $('.btn-dismiss').on('click', function () {
+    $('.btn-dismiss').on('click', function() {
         $('#frmUserCreate').trigger('reset');
         $('#frmUserEdit').trigger('reset');
     });
 
-    $(document).on('click', '.btnDelete', function () {
+    $(document).on('click', '.btnDelete', function() {
         var id = $(this).data('id');
         var value = $(this).data('value');
         console.log(`id`, id);
-        REST.delete('/user/delete/',id, value, (err, result) => {
-            if(err){
+        REST.delete('/user/delete/', id, value, (err, result) => {
+            if (err) {
                 $.toast({
                     heading: 'Sorry!',
                     text: err,
                     icon: 'error',
                     position: 'bottom-right'
                 });
-            }else{
+            } else {
                 fetchData();
             }
         });
     });
 
-    $(document).on('click', '.btnEdit', function(){
+    $(document).on('click', '.btnEdit', function() {
         var id = $(this).data('id');
-        REST.get('/user/edit/'+id, (err, result) => {
-            if(err){
+        REST.get('/user/edit/' + id, (err, result) => {
+            if (err) {
                 $.toast({
                     heading: 'Sorry!',
                     text: err,
                     icon: 'error',
                     position: 'bottom-right'
                 });
-            }else{
+            } else {
                 var data = result.data;
                 var eid = data.id;
                 console.log(data);
@@ -139,21 +149,21 @@ events = () => {
         });
     });
 
-    $('#frmUserEdit').submit(function (e) { 
+    $('#frmUserEdit').submit(function(e) {
         e.preventDefault();
         var id = $('#id').val();
         var data = $('#frmUserEdit').serialize();
-        REST.put('/user/edit/'+id, data, (err, result) => {
-            if(err){
+        REST.put('/user/edit/' + id, data, (err, result) => {
+            if (err) {
                 $.toast({
                     heading: 'Sorry!',
                     text: err,
                     icon: 'error',
                     position: 'bottom-right'
                 });
-            }else{
+            } else {
                 var code = result.code;
-                if(code == 200){
+                if (code == 200) {
                     $.toast({
                         heading: 'Success!',
                         text: 'Updated user!',
@@ -163,7 +173,7 @@ events = () => {
                     $('#userEditMoadl').modal('toggle');
                     $('#frmUserEdit').trigger('reset');
                     fetchData();
-                }else{
+                } else {
                     $.toast({
                         heading: 'Sorry!',
                         text: err,
@@ -171,7 +181,7 @@ events = () => {
                         position: 'bottom-right'
                     });
                 }
-                
+
             }
         });
     });

@@ -32,11 +32,11 @@ module.exports = (app) => {
 
     //#region artist
     app.get('/artist', pagesController.getArtistPage);
-    app.get('/artist/list',artistController.getArtistList);
-    app.post('/artist/create',artistController.artistCreate);
+    app.get('/artist/list', artistController.getArtistList);
+    app.post('/artist/create', artistController.artistCreate);
     app.get('/artist/edit/:id', artistController.getEditArtist);
     app.put('/artist/edit/:id', artistController.putEditArtist);
-    app.delete('/artist/delete/:id',artistController.deleteArtist);
+    app.delete('/artist/delete/:id', artistController.deleteArtist);
     // #endregion artist
 
     //#region genre
