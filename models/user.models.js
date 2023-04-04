@@ -3,7 +3,7 @@ const mysql = require('../helpers/database');
 //user list
 exports.userList = (cb) => {
     var str = ` SELECT * FROM tbl_user;`;
-    mysql.query(str, function (err, row) {
+    mysql.query(str, function(err, row) {
         if (err) {
             cb(err, null);
         } else {
@@ -18,7 +18,7 @@ exports.userList = (cb) => {
 
 exports.userCreate = (data, cb) => {
     var str = `INSERT INTO tbl_user SET ?;`;
-    mysql.query_filter(str,data, function (err, row) {
+    mysql.query_filter(str, data, function(err, row) {
         if (err) {
             cb(err, null);
         } else {
@@ -33,7 +33,7 @@ exports.userCreate = (data, cb) => {
 
 exports.getEditUser = (id, cb) => {
     var str = ` SELECT * FROM tbl_user WHERE user_id = ? ;`;
-    mysql.query_filter(str,[id], function (err, row) {
+    mysql.query_filter(str, [id], function(err, row) {
         if (err) {
             cb(err, null);
         } else {
@@ -44,7 +44,7 @@ exports.getEditUser = (id, cb) => {
 
 exports.putEditUser = (id, data, cb) => {
     var str = `UPDATE tbl_user SET ? WHERE user_id = ? ;`;
-    mysql.query_filter(str,[data, id], function (err, row) {
+    mysql.query_filter(str, [data, id], function(err, row) {
         if (err) {
             cb(err, null);
         } else {
@@ -56,7 +56,7 @@ exports.putEditUser = (id, data, cb) => {
 
 exports.deleteUser = (id, cb) => {
     var str = `DELETE FROM tbl_user WHERE user_id = ? ;`;
-    mysql.query_filter(str,[id], function (err, row) {
+    mysql.query_filter(str, [id], function(err, row) {
         if (err) {
             cb(err, null);
         } else {
