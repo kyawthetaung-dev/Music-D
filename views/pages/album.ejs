@@ -2,142 +2,145 @@
 <html lang="en">
 
 <head>
-  <%- include('../common/links.ejs') %>
+    <%- include('../common/links.ejs') %>
 </head>
 
 <body>
-  <!-- ======= Header ======= -->
-  <%- include('../components/header.ejs') -%>
+    <!-- ======= Header ======= -->
+    <%- include('../components/header.ejs') -%>
 
-    <%- include('../components/sidebar.ejs') -%>
-      <main id="main" class="main">
+        <%- include('../components/sidebar.ejs') -%>
+            <main id="main" class="main">
 
-        <div class="pagetitle">
-          <nav>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item">Album List</li>
-            </ol>
-          </nav>
-        </div><!-- End Page Title -->
+                <div class="pagetitle">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item">Album List</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!-- End Page Title -->
 
-        <section class="section">
-          <div class="row">
-            <div class="col-lg-12">
+                <section class="section">
+                    <div class="row">
+                        <div class="col-lg-12">
 
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <h5 class="card-title">Album List</h5>
-                    </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-2">
-                      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#albumModal">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5 class="card-title">Album List</h5>
+                                        </div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#albumModal">
                         <i class="bi bi-music-note-beamed"></i>
                          Add Album
                       </button>
-                    </div>
-                  </div>
-
-                  <table class="table datatable tbl_album">
-                    <thead>
-                      <tr>
-                        <th>Album ID</th>
-                        <th>Album Name</th>
-                        <th>Album Image</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                  </table>
-                  <div class="modal fade" id="albumModal" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title"> Create Album</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="frmAlbumCreate">
-                                    <div class="row mb-3">
-                                        <label for="inputText" class="col-sm-4 col-form-label">Album Name</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="album_name" name="album_name" placeholder="Enter Album Name">
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                        <label for="inputText" class="col-sm-4 col-form-label">Album Image</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="album_img" name="album_img" placeholder="Enter Artist Id">
+
+                                    <table class="table datatable tbl_album">
+                                        <thead>
+                                            <tr>
+                                                <th>Album ID</th>
+                                                <th>Album Name</th>
+                                                <th>Album Image</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                    <div class="modal fade" id="albumModal" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title"> Create Album</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="frmAlbumCreate">
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Album Name</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" id="album_name" name="album_name" placeholder="Enter Album Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Album Image</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" type="file" id="album_img" name="album_img">
+
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="modal-footer justify-content-center">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Create</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    
-                                    
-                                    <div class="modal-footer justify-content-center">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" >Create</button>
+
+                                    <div class="modal fade" id="albumEditModal" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Edit Album</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="frmAlbumEdit">
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Album ID</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="edit_album_id" id="edit_album_id" class="form-control" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Album Name</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="edit_album_name" id="edit_album_name" class="form-control" placeholder="Enter Album Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Album Image</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" type="file" id="edit_album_img" name="edit_album_img">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal-footer justify-content-center">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
+
                         </div>
                     </div>
-                </div>
+                </section>
 
-                <div class="modal fade" id="albumEditModal" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Edit Album</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="frmAlbumEdit">
-                                    <div class="row mb-3">
-                                        <label for="inputText" class="col-sm-4 col-form-label">Album ID</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="edit_album_id" id="edit_album_id" class="form-control" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputText" class="col-sm-4 col-form-label">Album Name</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="edit_album_name"  id="edit_album_name" class="form-control" placeholder="Enter Album Name">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputText" class="col-sm-4 col-form-label">Album Image</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="edit_album_img" name="edit_album_img" placeholder="Enter Artist Name">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="modal-footer justify-content-center">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Update</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-      </main><!-- End #main -->
+            </main>
+            <!-- End #main -->
 
 
-      <!-- ======= Footer ======= -->
-      <%- include('../components/footer.ejs') -%>
+            <!-- ======= Footer ======= -->
+            <%- include('../components/footer.ejs') -%>
 
-        <%- include('../common/scripts.ejs') %>
-          <script src="/javascripts/album.js"></script>
+                <%- include('../common/scripts.ejs') %>
+                    <script src="/javascripts/album.js"></script>
 </body>
 
 </html>

@@ -2,153 +2,157 @@
 <html lang="en">
 
 <head>
-  <%- include('../common/links.ejs') %>
+    <%- include('../common/links.ejs') %>
 </head>
 
 <body>
-  <!-- ======= Header ======= -->
-  <%- include('../components/header.ejs') -%>
+    <!-- ======= Header ======= -->
+    <%- include('../components/header.ejs') -%>
 
-    <%- include('../components/sidebar.ejs') -%>
-      <main id="main" class="main">
+        <%- include('../components/sidebar.ejs') -%>
+            <main id="main" class="main">
 
-        <div class="pagetitle">
-          <nav>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item">Artist List</li>
-            </ol>
-          </nav>
-        </div><!-- End Page Title -->
+                <div class="pagetitle">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item">Artist List</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!-- End Page Title -->
 
-        <section class="section">
-          <div class="row">
-            <div class="col-lg-12">
+                <section class="section">
+                    <div class="row">
+                        <div class="col-lg-12">
 
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <h5 class="card-title">Artist List</h5>
-                    </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-2">
-                      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#artistModal">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5 class="card-title">Artist List</h5>
+                                        </div>
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#artistModal">
                         <i class="bi bi-music-note-beamed"></i>
                         Add New Artist
                       </button>
-                    </div>
-                  </div>
-
-                  <table class="table datatable tbl_artist">
-                    <thead>
-                      <tr>
-                        <th>Artist ID</th>
-                        <th>Artist Name</th>
-                        <th>Artist Gender</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                  </table>
-                  <div class="modal fade" id="artistModal" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title"> Create Album</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="frmArtistCreate">
-                                    <div class="row mb-3">
-                                        <label for="inputText" class="col-sm-4 col-form-label">Artist Name</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="artist_name" name="artist_name" placeholder="Enter Artist Name">
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                        <label for="inputText" class="col-sm-4 col-form-label">Artist Image</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="artist_img" name="artist_img" placeholder="Enter Artist Id">
+
+                                    <table class="table datatable tbl_artist">
+                                        <thead>
+                                            <tr>
+                                                <th>Artist ID</th>
+                                                <th>Artist Name</th>
+                                                <th>Artist Gender</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                    <div class="modal fade" id="artistModal" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title"> Create Album</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="frmArtistCreate">
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Artist Name</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" id="artist_name" name="artist_name" placeholder="Enter Artist Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Artist Image</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" type="file" id="artist_img" name="artist_img">
+                                                                <!-- <input type="text" class="form-control" id="artist_img" name="artist_img" placeholder="Enter Artist Id"> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Artist Gender</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" id="artist_gender" name="artist_gender" placeholder="Enter Artist Id">
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="modal-footer justify-content-center">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Create</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                      <label for="inputText" class="col-sm-4 col-form-label">Artist Gender</label>
-                                      <div class="col-sm-8">
-                                          <input type="text" class="form-control" id="artist_gender" name="artist_gender" placeholder="Enter Artist Id">
-                                      </div>
-                                  </div>
-                                    
-                                    
-                                    <div class="modal-footer justify-content-center">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" >Create</button>
+
+                                    <div class="modal fade" id="artistEditModal" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Edit Artist</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="frmArtistEdit">
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Artist ID</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="edit_artist_id" id="edit_artist_id" class="form-control" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Artist Name</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="edit_artist_name" id="edit_artist_name" class="form-control" placeholder="Enter Artist Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Artist Image</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" type="file" id="edit_artist_img" name="edit_artist_img">
+                                                                <!-- <input type="text" class="form-control" id="edit_artist_img" name="edit_artist_img" placeholder=""> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputText" class="col-sm-4 col-form-label">Artist Gender</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" id="edit_artist_gender" name="edit_artist_gender" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer justify-content-center">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
+
                         </div>
                     </div>
-                </div>
+                </section>
 
-                <div class="modal fade" id="artistEditModal" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Edit Artist</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="frmArtistEdit">
-                                    <div class="row mb-3">
-                                        <label for="inputText" class="col-sm-4 col-form-label">Artist ID</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="edit_artist_id" id="edit_artist_id" class="form-control" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputText" class="col-sm-4 col-form-label">Artist Name</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="edit_artist_name"  id="edit_artist_name" class="form-control" placeholder="Enter Artist Name">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputText" class="col-sm-4 col-form-label">Artist Image</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="edit_artist_img" name="edit_artist_img" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                      <label for="inputText" class="col-sm-4 col-form-label">Artist Gender</label>
-                                      <div class="col-sm-8">
-                                          <input type="text" class="form-control" id="edit_artist_gender" name="edit_artist_gender" placeholder="">
-                                      </div>
-                                  </div>
-                                    <div class="modal-footer justify-content-center">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Update</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-      </main><!-- End #main -->
+            </main>
+            <!-- End #main -->
 
 
-      <!-- ======= Footer ======= -->
-      <%- include('../components/footer.ejs') -%>
+            <!-- ======= Footer ======= -->
+            <%- include('../components/footer.ejs') -%>
 
-        <%- include('../common/scripts.ejs') %>
-          <script src="/javascripts/artist.js"></script>
+                <%- include('../common/scripts.ejs') %>
+                    <script src="/javascripts/artist.js"></script>
 </body>
 
 </html>

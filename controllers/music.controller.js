@@ -1,3 +1,4 @@
+const { log } = require('console');
 var musicModel = require('../models/music.models');
 
 exports.getMusicList = (req, res) => {
@@ -11,13 +12,16 @@ exports.getMusicList = (req, res) => {
             res.status(200).json({
                 "code": 200,
                 "message": "Success",
-                data : result
+                data: result
             })
         }
     });
 }
 
 exports.musicCreate = (req, res) => {
+    var musicname = req.body.music_name;
+    console.log(musicname);
+    console.log("files" + req.body.music_image);
     const data = {
         music_name: req.body.music_name,
         music_image: req.body.music_image,
@@ -26,7 +30,7 @@ exports.musicCreate = (req, res) => {
         music_files: req.body.music_files,
     }
     console.log(data);
-    musicModel.musicCreate(data,(err, result) => {
+    musicModel.musicCreate(data, (err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,
@@ -36,7 +40,7 @@ exports.musicCreate = (req, res) => {
             res.status(200).json({
                 "code": 200,
                 "message": "Success",
-                data : result
+                data: result
             })
         }
     });
@@ -55,7 +59,7 @@ exports.getEditMusic = (req, res) => {
             res.status(200).json({
                 "code": 200,
                 "message": "Success",
-                data : result
+                data: result
             })
         }
     });
@@ -80,7 +84,7 @@ exports.putEditMusic = (req, res) => {
             res.status(200).json({
                 "code": 200,
                 "message": "Success",
-                data : result
+                data: result
             })
         }
     });
@@ -99,7 +103,7 @@ exports.deleteMusic = (req, res) => {
             res.status(200).json({
                 "code": 200,
                 "message": "Success",
-                data : result
+                data: result
             })
         }
     });
