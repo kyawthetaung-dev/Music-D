@@ -17,6 +17,22 @@ exports.getMusicList = (req, res) => {
         }
     });
 }
+exports.get_Music_trend_List = (req, res) => {
+    musicModel.music_trend_List((err, result) => {
+        if (err) {
+            res.status(200).json({
+                "code": 404,
+                "message": err
+            })
+        } else {
+            res.status(200).json({
+                "code": 200,
+                "message": "Success",
+                data: result
+            })
+        }
+    });
+}
 
 exports.musicCreate = (req, res) => {
     var musicname = req.body.music_name;

@@ -2,7 +2,7 @@ const mysql = require('../helpers/database');
 
 //music list
 exports.albumList = (cb) => {
-    var str = `select tbl_album.alb_name,count(tbl_music.music_id) as music_count from tbl_album left join tbl_music on (tbl_music.album_id=tbl_album.alb_id) GROUP BY tbl_album.alb_id`;
+    var str = `select tbl_album.alb_image,tbl_album.alb_name,count(tbl_music.music_id) as music_count from tbl_album left join tbl_music on (tbl_music.album_id=tbl_album.alb_id) GROUP BY tbl_album.alb_id`;
 
     mysql.query(str, function(err, row) {
         if (err) {

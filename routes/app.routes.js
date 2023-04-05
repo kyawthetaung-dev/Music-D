@@ -11,6 +11,7 @@ module.exports = (app) => {
     //#region music
     app.get('/music', pagesController.getMusicPage);
     app.get('/music/list', musicController.getMusicList);
+    app.get('/music/trend/list', musicController.get_Music_trend_List);
     app.post('/music/create', musicController.musicCreate);
     app.get('/music/edit/:id', musicController.getEditMusic);
     app.put('/music/edit/:id', musicController.putEditMusic);
