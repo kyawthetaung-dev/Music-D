@@ -22,8 +22,8 @@ init = () => {
                 var dom = ``;
                 dom = `
                 <div class="text-center">
-                    <button type="button" class="btn btn-info btn-icon btn-sm " id="btnEdit" style="width : 45%" data-id="${data}"><i class="fas fa-user-edit"></i> Edit</button>
-                    <button type="button" class="btn btn-danger btn-icon btn-sm " id="btnDelete" style="width : 45%" data-id="${data}" data-value="${row.music_id}"><i class="fas fa-trash"></i> Delete</button>
+                    <button type="button" class="btn btn-info btn-icon btn-sm btnEdit" style="width : 45%" data-id="${data}"><i class="fas fa-user-edit"></i> Edit</button>
+                    <button type="button" class="btn btn-danger btn-icon btn-sm btnDelete" style="width : 45%" data-id="${data}" data-value="${row.music_id}"><i class="fas fa-trash"></i>Delete</button>
                 </div>
                 `;
                 return dom;
@@ -129,7 +129,7 @@ events = () => {
     });
 
 
-    $(document).on('click', '#btnEdit', function() {
+    $(document).on('click', '.btnEdit', function() {
         var id = $(this).data('id');
         REST.get('/music/edit/' + id, (err, result) => {
             //console.log("click");
@@ -184,7 +184,7 @@ events = () => {
     });
 }
 
-$(document).on('click', '#btnDelete', function() {
+$(document).on('click', '.btnDelete', function() {
     var id = $(this).data('id');
     var value = $(this).data('value');
     REST.delete('/music/delete/', id, value, (err, result) => {
