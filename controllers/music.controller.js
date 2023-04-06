@@ -1,8 +1,8 @@
 const { log } = require('console');
 var musicModel = require('../models/music.models');
 
-exports.getMusicList = (req, res) => {
-    musicModel.musicList((err, result) => {
+exports.api_MusicList = (req, res) => {
+    musicModel.api_musicList((err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,
@@ -17,8 +17,40 @@ exports.getMusicList = (req, res) => {
         }
     });
 }
-exports.get_Music_trend_List = (req, res) => {
-    musicModel.music_trend_List((err, result) => {
+exports.api_new_music = (req, res) => {
+    musicModel.api_new_music((err, result) => {
+        if (err) {
+            res.status(200).json({
+                "code": 404,
+                "message": err
+            })
+        } else {
+            res.status(200).json({
+                "code": 200,
+                "message": "Success",
+                data: result
+            })
+        }
+    });
+}
+exports.api_Music_trend_List = (req, res) => {
+    musicModel.api_music_trend_List((err, result) => {
+        if (err) {
+            res.status(200).json({
+                "code": 404,
+                "message": err
+            })
+        } else {
+            res.status(200).json({
+                "code": 200,
+                "message": "Success",
+                data: result
+            })
+        }
+    });
+}
+exports.get_MusicList = (req, res) => {
+    musicModel.get_musicList((err, result) => {
         if (err) {
             res.status(200).json({
                 "code": 404,

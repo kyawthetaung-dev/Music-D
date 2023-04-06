@@ -16,6 +16,41 @@ exports.getAlbumList = (req, res) => {
         }
     });
 }
+exports.get_album_detail_list = (req, res) => {
+    var p_id = req.params.id;
+
+    albumModel.get_album_detail_list(p_id, (err, results) => {
+        if (err) {
+            res.status(404).json({
+                "code": 404,
+                "message": err
+            });
+        } else {
+            res.status(200).json({
+                "code": 200,
+                "message": "searching",
+                "data": results
+            });
+        }
+    })
+}
+
+exports.get_AlbumList = (req, res) => {
+    albumModel.get_albumList((err, result) => {
+        if (err) {
+            res.status(200).json({
+                "code": 404,
+                "message": err
+            })
+        } else {
+            res.status(200).json({
+                "code": 200,
+                "message": "Success",
+                data: result
+            })
+        }
+    });
+}
 exports.albumCreate = (req, res) => {
     const data = {
         alb_name: req.body.album_name,

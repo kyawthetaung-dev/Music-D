@@ -10,21 +10,25 @@ module.exports = (app) => {
 
     //#region music
     app.get('/music', pagesController.getMusicPage);
-    app.get('/music/list', musicController.getMusicList);
-    app.get('/music/trend/list', musicController.get_Music_trend_List);
+    app.get('/music/list', musicController.get_MusicList);
+    //api
+    app.get('/api/music/list', musicController.api_MusicList);
+    app.get('/api/music/new/list', musicController.api_new_music);
+    app.get('/api/music/trend/list', musicController.api_Music_trend_List);
+    //
     app.post('/music/create', musicController.musicCreate);
     app.get('/music/edit/:id', musicController.getEditMusic);
     app.put('/music/edit/:id', musicController.putEditMusic);
     app.delete('/music/delete/:id', musicController.deleteMusic);
     // #endregion music
 
-    //#region video
-    app.get('/video', pagesController.getVideoPage);
-    // #endregion video
-
     //#region album
     app.get('/album', pagesController.getAlbumPage);
-    app.get('/album/list', albumController.getAlbumList);
+    app.get('/album/list', albumController.get_AlbumList);
+    //api
+    app.get('/api/album/list', albumController.getAlbumList);
+    app.get('/api/album/detail/list/:id', albumController.get_album_detail_list);
+    //
     app.post('/album/create', albumController.albumCreate);
     app.get('/album/edit/:id', albumController.getEditAlbum);
     app.put('/album/edit/:id', albumController.putEditAlbum);
@@ -40,13 +44,6 @@ module.exports = (app) => {
     app.delete('/artist/delete/:id', artistController.deleteArtist);
     // #endregion artist
 
-    //#region genre
-    app.get('/genre', pagesController.getGenrePage);
-    // #endregion genre
-
-    //#region language
-    app.get('/language', pagesController.getMusicLanguagePage);
-    // #endregion language
 
     //#region  user
     app.get('/user', pagesController.getUserPage);
