@@ -17,27 +17,27 @@ exports.getAdminList = (req, res) => {
         }
     });
 }
-// exports.musicCreate = (req, res) => {
-//     const data = {
-//         music_name: req.body.music_name,
-//         released_at : req.body.released_at,
-//     }
-//     console.log(data);
-//     musicModel.musicCreate(data,(err, result) => {
-//         if (err) {
-//             res.status(200).json({
-//                 "code": 404,
-//                 "message": err
-//             })
-//         } else {
-//             res.status(200).json({
-//                 "code": 200,
-//                 "message": "Success",
-//                 data : result
-//             })
-//         }
-//     });
-// }
+exports.musicCreate = (req, res) => {
+    const data = {
+        music_name: req.body.music_name,
+        released_at : req.body.released_at,
+    }
+    console.log(data);
+    musicModel.musicCreate(data,(err, result) => {
+        if (err) {
+            res.status(200).json({
+                "code": 404,
+                "message": err
+            })
+        } else {
+            res.status(200).json({
+                "code": 200,
+                "message": "Success",
+                data : result
+            })
+        }
+    });
+}
 
 
 exports.getEditAdmin = (req, res) => {

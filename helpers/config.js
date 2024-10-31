@@ -2,7 +2,7 @@ require('dotenv').config();
 
 var mysql_options = {
     connectionLimit: 100,
-    host: process.env.DB_HOST,
+    host: process.env.PORT,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,

@@ -46,7 +46,7 @@ module.exports = (app) => {
 
 
     //#region  user
-    app.get('/user', pagesController.getUserPage);
+    app.get('/user');
     app.get('/user/list', userController.getUserList);
     app.post('/user/create', userController.userCreate);
     app.get('/user/edit/:id', userController.getEditUser);

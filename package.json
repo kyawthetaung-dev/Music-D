@@ -17,10 +17,12 @@
         "http-errors": "~1.6.3",
         "https": "^1.0.0",
         "jsonwebtoken": "^9.0.0",
+        "mongoose": "^8.7.3",
         "morgan": "~1.9.1",
         "mysql": "^2.18.1",
         "mysql2": "^3.2.0",
         "node": "^19.8.1",
+        "nodemodule": "^0.3.0",
         "nodemon": "^2.0.22"
     }
 }

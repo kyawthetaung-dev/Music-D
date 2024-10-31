@@ -16,20 +16,20 @@ exports.adminList = (cb) => {
     })
 }
 
-// exports.musicCreate = (data, cb) => {
-//     var str = `INSERT INTO tbl_music SET ?;`;
-//     mysql.query_filter(str,data, function (err, row) {
-//         if (err) {
-//             cb(err, null);
-//         } else {
-//             if (row.length == 0) {
-//                 cb(" Not Found!", null);
-//             } else {
-//                 cb(null, row);
-//             }
-//         }
-//     })
-// }
+exports.musicCreate = (data, cb) => {
+    var str = `INSERT INTO tbl_music SET ?;`;
+    mysql.query_filter(str,data, function (err, row) {
+        if (err) {
+            cb(err, null);
+        } else {
+            if (row.length == 0) {
+                cb(" Not Found!", null);
+            } else {
+                cb(null, row);
+            }
+        }
+    })
+}
 
 
 exports.getEditAdmin = (id, cb) => {

@@ -117,7 +117,7 @@ exports.query = function (query, callback) {
             //connection.release();
             console.log(err);
             callback(err, null);
-            connection.release();
+            //connection.release();
         }
     });
     //query = null;

@@ -68,8 +68,6 @@ exports.get_MusicList = (req, res) => {
 
 exports.musicCreate = (req, res) => {
     var musicname = req.body.music_name;
-    console.log(musicname);
-    console.log("files" + req.body.music_image);
     const data = {
         music_name: req.body.music_name,
         music_image: req.body.music_image,
@@ -77,7 +75,6 @@ exports.musicCreate = (req, res) => {
         album_id: req.body.album_id,
         music_files: req.body.music_files,
     }
-    console.log(data);
     musicModel.musicCreate(data, (err, result) => {
         if (err) {
             res.status(202).json({
